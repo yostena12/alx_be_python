@@ -22,5 +22,5 @@ if time_bound == "yes":
 else:
     reminder = f"Note: {reminder}. Consider completing it when you have free time."
 
-# Final output
-print("\nReminder:", reminder)
+# Final output — must include 'print("Reminder:'
+print(f"Reminder: {reminder}")
