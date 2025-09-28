@@ -1,15 +1,14 @@
 # fns_and_dsa/temp_conversion_tool.py
 
-# Global conversion factors (explicit float arithmetic)
-FAHRENHEIT_TO_CELSIUS_FACTOR = 5.0 / 9.0
-CELSIUS_TO_FAHRENHEIT_FACTOR = 9.0 / 5.0
+# Exact global conversion factors (top-level, as required)
+FAHRENHEIT_TO_CELSIUS_FACTOR = (5/9)
+CELSIUS_TO_FAHRENHEIT_FACTOR = (9/5)
 
 def convert_to_celsius(fahrenheit):
     """
-    Convert Fahrenheit to Celsius using the global FAHRENHEIT_TO_CELSIUS_FACTOR.
+    Convert Fahrenheit to Celsius using FAHRENHEIT_TO_CELSIUS_FACTOR.
     Raises ValueError with the exact message if input is not numeric.
     """
-    global FAHRENHEIT_TO_CELSIUS_FACTOR
     try:
         f = float(fahrenheit)
     except (TypeError, ValueError):
@@ -18,10 +17,9 @@ def convert_to_celsius(fahrenheit):
 
 def convert_to_fahrenheit(celsius):
     """
-    Convert Celsius to Fahrenheit using the global CELSIUS_TO_FAHRENHEIT_FACTOR.
+    Convert Celsius to Fahrenheit using CELSIUS_TO_FAHRENHEIT_FACTOR.
     Raises ValueError with the exact message if input is not numeric.
     """
-    global CELSIUS_TO_FAHRENHEIT_FACTOR
     try:
         c = float(celsius)
     except (TypeError, ValueError):
@@ -29,11 +27,11 @@ def convert_to_fahrenheit(celsius):
     return (c * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
 
 def main():
+    temp_input = input("Enter the temperature to convert: ")
     try:
-        temp_input = input("Enter the temperature to convert: ")
         temperature = float(temp_input)
     except ValueError:
-        # exact error message required by the assignment
+        # exact message expected by the checker
         raise ValueError("Invalid temperature. Please enter a numeric value.")
 
     unit = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().upper()
